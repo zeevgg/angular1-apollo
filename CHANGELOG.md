@@ -5,6 +5,7 @@
 ### v0.2.1
 
 - Support more versions of `angular` ([PR #18](https://github.com/apollostack/angular1-apollo/pull/18))
+- Add `watchQuery` and `subscribe` methods thanks to `apollo-client-rxjs` ([PR #7](https://github.com/apollostack/angular1-apollo/pull/7))
 
 ### v0.2.0
 
