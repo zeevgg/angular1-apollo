@@ -21,7 +21,7 @@ class Apollo {
     return this.wrap(this.client.query(options));
   }
 
-  public watchQuery(options: any): ApolloQueryObservable<ApolloQueryResult> {
+  public watchQuery<T>(options: any): ApolloQueryObservable<ApolloQueryResult<T>> {
     return new ApolloQueryObservable(rxify(this.client.watchQuery)(options));
   } 
 
