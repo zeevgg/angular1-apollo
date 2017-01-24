@@ -9,13 +9,13 @@ class Apollo {
     private $q: any
   ) {}
 
-  public query(options: any): angular.IPromise<ApolloQueryResult> {
+  public query<T>(options: any): angular.IPromise<ApolloQueryResult<T>> {
     this.check();
     
     return this.wrap(this.client.query(options));
   } 
 
-  public mutate(options: any): angular.IPromise<ApolloQueryResult> {
+  public mutate<T>(options: any): angular.IPromise<ApolloQueryResult<T>> {
     this.check();
     
     return this.wrap(this.client.mutate(options));
