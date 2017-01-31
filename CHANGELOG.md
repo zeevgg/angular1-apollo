@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+### v0.2.0
+
 - Support **ApolloClient** `v0.8.0` ([PR #12](https://github.com/apollostack/angular1-apollo/pull/12))
 
 ### v0.1.0
