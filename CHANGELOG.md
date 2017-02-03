@@ -3,6 +3,7 @@
 ### vNEXT
 
 - Add `watchQuery` and `subscribe` methods thanks to `apollo-client-rxjs` ([PR #7](https://github.com/apollostack/angular1-apollo/pull/7))
+- Expose interfaces of `Apollo` service and `ApolloProvider` ([PR #7](https://github.com/apollostack/angular1-apollo/pull/7))
 - **BREAKING CHANGE:** Change the name of the module to just `apollo`, instead of `angular-apollo` ([PR #7](https://github.com/apollostack/angular1-apollo/pull/7))
 
 ### v0.2.1
