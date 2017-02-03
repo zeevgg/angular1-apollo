@@ -1,4 +1,7 @@
 build/tests/
 src/
+examples/
+.vscode
+.travis.yml
 CHANGELOG.md
 tsconfig.json
