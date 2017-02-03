@@ -19,7 +19,17 @@ npm install angular1-apollo apollo-client --save
 
 ```ts
 angular.module('app', [
-  'angular-apollo'
+  'apollo'
+])
+```
+
+or simply:
+
+```ts
+import angularApollo from 'angular1-apollo';
+
+angular.module('app', [
+  angularApollo
 ])
 ```
 
@@ -29,26 +39,29 @@ angular.module('app', [
 
 ```ts
 import ApolloClient from 'apollo-client';
+import { ApolloProvider } from 'angular1-apollo';
 
 angular.module('app', [
-  'angular-apollo'
-]).config((apolloProvider) => {
+  'apollo'
+]).config(['apolloProvider', (apolloProvider: ApolloProvider) => {
   const client = new ApolloClient();
 
   apolloProvider.defaultClient(client);
-});
+}]);
 ```
 
 ### Queries
-#### Apollo.query(options): Promise<ApolloQueryResult>
+
+#### Apollo.query<T>(options): Promise<ApolloQueryResult<T>>
 
 [See documentation](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.query)
 
 ```ts
 import gql from 'graphql-tag';
+import { Apollo } from 'angular1-apollo';
 
 angular.module('app')
-  .controller('AppCtrl', (apollo) => {
+  .controller('AppCtrl', ['apollo', (apollo: Apollo) => {
     apollo.query({
       query: gql`
         query getHeroes {
@@ -61,19 +74,47 @@ angular.module('app')
     }).then(result => {
       console.log('got data', result);
     });
-  });
+  }]);
 ```
 
-### Mutations
-#### Apollo.mutate(options): Promise<ApolloQueryResult>
+#### Apollo.watchQuery<T>(options): Observable<ApolloQueryResult<T>>
 
-[See documentation](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient\.mutate)
+[See documentation](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.watchQuery)
 
 ```ts
 import gql from 'graphql-tag';
+import { Apollo } from 'angular1-apollo';
 
 angular.module('app')
-  .controller('AppCtrl', (apollo) => {
+  .controller('AppCtrl', ['apollo', (apollo: Apollo) => {
+    apollo.watchQuery({
+      query: gql`
+        query getHeroes {
+          heroes {
+            name
+            power
+          }
+        }
+      `
+    }).subscribe(result => {
+      console.log('got data', result);
+    });
+  }]);
+```
+
+### Mutations
+
+#### Apollo.mutate<T>(options): Promise<ApolloQueryResult<T>>
+
+[See documentation](http://dev.apollodata.com/core/apollo-client-api.html#ApolloClient.mutate)
+
+```ts
+import gql from 'graphql-tag';
+import { Apollo } from 'angular1-apollo';
+
+
+angular.module('app')
+  .controller('AppCtrl', ['apollo', (apollo: Apollo) => {
     apollo.mutate({
       mutation: gql`
         mutation newHero($name: String!) {
@@ -88,7 +129,7 @@ angular.module('app')
     }).then(result => {
       console.log('got data', result);
     });
-  });
+  }]);
 ```
 
 ## Development
