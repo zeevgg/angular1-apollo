@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+- Support more versions of `angular` ([PR #18](https://github.com/apollostack/angular1-apollo/pull/18))
+
 ### v0.2.0
 
 - Support **ApolloClient** `v0.8.0` ([PR #12](https://github.com/apollostack/angular1-apollo/pull/12))
