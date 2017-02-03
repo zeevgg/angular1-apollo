@@ -9,7 +9,7 @@ import 'rxjs/add/observable/from';
 
 import { ApolloQueryObservable } from './ApolloQueryObservable';
 
-class Apollo {
+export class Apollo {
   constructor(
     private client: ApolloClient, 
     private $q: any
@@ -52,7 +52,7 @@ class Apollo {
   }
 }
 
-class ApolloProvider implements angular.IServiceProvider {
+export class ApolloProvider implements angular.IServiceProvider {
   private client: ApolloClient;
   
   public $get = ['$q', ($q) => new Apollo(this.client, $q)];
@@ -62,5 +62,9 @@ class ApolloProvider implements angular.IServiceProvider {
   }
 }
 
-export default angular.module('angular-apollo', [])
+export const name = 'apollo'
+
+angular.module(name, [])
   .provider('apollo', new ApolloProvider);
+
+export default name;
