@@ -56,7 +56,7 @@ class AppComponent {
 }
 
 angular.module('app', [
-  'angular-apollo'
+  angularApollo
 ])
   // Config
   .config(['apolloProvider', config])
