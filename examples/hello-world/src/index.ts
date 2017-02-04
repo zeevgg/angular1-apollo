@@ -15,6 +15,7 @@ class AppComponent {
   nameFilter: Subject<string> = new Subject<string>();
   name: string = '';
   users: any[];
+  usersObs: any;
 
   static $inject: string[] = ['apollo', '$scope'];
   
@@ -24,7 +25,7 @@ class AppComponent {
   ) {}
 
   $onInit() {
-    this.apollo.watchQuery({
+    this.usersObs = this.apollo.watchQuery({
       query: gql`
         query getUsers($name: String) {
           users(name: $name) {
@@ -42,12 +43,23 @@ class AppComponent {
       },
     })
     .observeOnScope(this.$scope)
-    .map(result => result.data.users)
-    .subscribe((users) => {
+    .map(result => result.data.users);
+    
+    this.usersObs.subscribe((users) => {
       this.users = users;
     });
 
     this.nameFilter.next(this.name);
+
+    setTimeout(() => {
+      console.log('Polling: start');
+      this.usersObs.startPolling(500);
+    }, 500);
+
+    setTimeout(() => {
+      console.log('Polling: stop');
+      this.usersObs.stopPolling();
+    }, 3500);
   }
 
   onNameChange() {
