@@ -3,6 +3,7 @@
   "version": "0.2.1",
   "description": "Angular 1.0 client for Apollo",
   "main": "build/src/index.js",
+  "typings": "build/src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublish": "npm run build",
