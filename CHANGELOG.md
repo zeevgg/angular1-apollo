@@ -2,6 +2,8 @@
 
 ### vNEXT
 
+### v0.2.1
+
 - Support more versions of `angular` ([PR #18](https://github.com/apollostack/angular1-apollo/pull/18))
 
 ### v0.2.0
