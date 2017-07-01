@@ -45,4 +45,4 @@ class ApolloProvider implements angular.IServiceProvider {
 }
 
 export default angular.module('angular-apollo', [])
-  .provider('apollo', new ApolloProvider);
+  .provider('apollo', new ApolloProvider).name;
